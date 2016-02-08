@@ -25,10 +25,14 @@ Plugin 'bling/vim-bufferline'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-markdown'
 Plugin 'reedes/vim-thematic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'Chiel92/vim-autoformat'
+" Plugin 'Chiel92/vim-autoformat'
+"Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'tomasr/molokai'
+Plugin 'flazz/vim-colorschemes'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'derekwyatt/vim-scala'
 " Plugin 'derekwyatt/vim-sbt'
@@ -37,6 +41,7 @@ Plugin 'derekwyatt/vim-scala'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+" let mapleader = ','
 " To ignore plugin indent changes, instead use:
 " filetype plugin on
 
@@ -64,6 +69,7 @@ let g:airline_theme='wombat'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#bufferline#enabled = 1
 set laststatus=2
+colorscheme molokai
 let g:airline_section_z = '%3pp %l:%c'
 " airline end
 " crtlp start
@@ -92,9 +98,19 @@ let g:gitgutter_sign_column_always = 1
 " start tmux
 let g:tmuxline_powerline_separators = 2 
 " end tmux
-" start vim-autoformat
-au BufWrite * :Autoformat
+" start vim-autoformat Disabling becouse of non compability with markdown
+" au BufWrite * :Autoformat
 " end vim-autoformat
 " start YouCompleteMe
 let g:EclimCompletionMethod = 'omnifunc'
 " end YouCompleteMe
+" start vim-markdown
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+" end vim-markdown
+" start vim-ident-guides
+"let g:indent_guides_enable_on_vim_startup = 1 
+"let g:indent_guides_auto_colors = 1 
+"let g:indent_guides_guide_size = 1 
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=darkgrey ctermbg=252
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgrey ctermbg=251
+" end vim-ident-guides
