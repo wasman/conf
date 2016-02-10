@@ -29,7 +29,7 @@ Plugin 'tpope/vim-markdown'
 Plugin 'reedes/vim-thematic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
-" Plugin 'Chiel92/vim-autoformat'
+Plugin 'Chiel92/vim-autoformat'
 "Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'tomasr/molokai'
 Plugin 'flazz/vim-colorschemes'
@@ -99,7 +99,7 @@ let g:gitgutter_sign_column_always = 1
 let g:tmuxline_powerline_separators = 2 
 " end tmux
 " start vim-autoformat Disabling becouse of non compability with markdown
-" au BufWrite * :Autoformat
+au BufWrite *.java :Autoformat
 " end vim-autoformat
 " start YouCompleteMe
 let g:EclimCompletionMethod = 'omnifunc'
