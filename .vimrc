@@ -121,5 +121,10 @@ inoremap <silent> <Up> <ESC><UP>
 inoremap <silent> <Down> <ESC><Down>
 " end key mapping
 " start clipboard
-set clipboard^=unnamed
+set clipboard^=unnamedplus
+" copy to buffer
+vmap <C-y> :w! ~/.vimbuffer<CR>
+nmap <C-y> :.w! ~/.vimbuffer<CR>
+" paste from buffer
+map <C-b> :r ~/.vimbuffer<CR>
 " end clipboard
