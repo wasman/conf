@@ -61,6 +61,7 @@ set nocompatible
 syntax on
 hi CursorLineNr term=bold ctermfg=Grey gui=bold guifg=Grey
 hi LineNr ctermfg=DarkGrey guifg=#2b506e guibg=#000000 
+"
 " set nowrap
 " airline start
 set guifont=Liberation\ Mono\ for\ Powerline\ 22 
@@ -114,3 +115,11 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=darkgrey ctermbg=252
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgrey ctermbg=251
 " end vim-ident-guides
+" start key mapping
+inoremap <D-[> <ESC>
+inoremap <silent> <Up> <ESC><UP>
+inoremap <silent> <Down> <ESC><Down>
+" end key mapping
+" start clipboard
+set clipboard^=unnamed
+" end clipboard
