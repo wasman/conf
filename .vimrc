@@ -116,7 +116,7 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgrey ctermbg=251
 " end vim-ident-guides
 " start key mapping
-inoremap <D-[> <ESC>
+inoremap jj <ESC>
 inoremap <silent> <Up> <ESC><UP>
 inoremap <silent> <Down> <ESC><Down>
 " end key mapping
