@@ -35,8 +35,9 @@ Plugin 'tomasr/molokai'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'derekwyatt/vim-scala'
+Plugin 'greyblake/vim-preview'
 " Plugin 'derekwyatt/vim-sbt'
-"
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 " Plugins end
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -104,6 +105,7 @@ au BufWrite *.java :Autoformat
 " end vim-autoformat
 " start YouCompleteMe
 let g:EclimCompletionMethod = 'omnifunc'
+"let g:ycm_key_invoke_completion = 'M-Space'
 " end YouCompleteMe
 " start vim-markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
@@ -119,6 +121,7 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 inoremap jj <ESC>
 inoremap <silent> <Up> <ESC><UP>
 inoremap <silent> <Down> <ESC><Down>
+imap `` <C-Space>
 " end key mapping
 " start clipboard
 set clipboard^=unnamedplus
@@ -128,3 +131,27 @@ nmap <C-y> :.w! ~/.vimbuffer<CR>
 " paste from buffer
 map <C-b> :r ~/.vimbuffer<CR>
 " end clipboard
+"starts scripts
+function! ViewHtmlText(url)
+	if !empty(a:url)
+		new
+		setlocal buftype=nofile bufhidden=hide noswapfile
+		execute 'r !links ' . a:url . ' -dump -dump-width ' . winwidth(0)
+		1d
+	endif
+endfunction
+" Save and view text for current html file.
+nnoremap <Leader>H :update<Bar>call ViewHtmlText(expand('%:p'))<CR>
+" View text for visually selected url.
+vnoremap <Leader>h y:call ViewHtmlText(@@)<CR>
+" View text for URL from clipboard.
+" On Linux, use @* for current selection or @+ for text in clipboard.
+nnoremap <Leader>h :call ViewHtmlText(@+)<CR>
+"end scripts
+"start NERDTree keymap
+map <C-n> :NERDTreeToggle<CR>
+"end NERDTree keymap
+"start insert line in n mode keymap
+nmap jO O<Esc>
+nmap jo o<Esc>
+"end insertline in n mode keymap
