@@ -34,9 +34,9 @@ Plugin 'Chiel92/vim-autoformat'
 Plugin 'tomasr/molokai'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'derekwyatt/vim-scala'
+"Plugin 'derekwyatt/vim-scala'
 Plugin 'greyblake/vim-preview'
-" Plugin 'derekwyatt/vim-sbt'
+"Plugin 'derekwyatt/vim-sbt'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 " Plugins end
 " All of your Plugins must be added before the following line
@@ -152,6 +152,6 @@ nnoremap <Leader>h :call ViewHtmlText(@+)<CR>
 map <C-n> :NERDTreeToggle<CR>
 "end NERDTree keymap
 "start insert line in n mode keymap
-nmap jO O<Esc>
-nmap jo o<Esc>
+nmap `O O<Esc>
+nmap `o o<Esc>
 "end insertline in n mode keymap
