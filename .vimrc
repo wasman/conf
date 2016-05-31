@@ -1,4 +1,5 @@
 " Setup start
+" source /apollo/env/envImprovement/var/vimrc
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -37,7 +38,12 @@ Plugin 'Valloric/YouCompleteMe'
 "Plugin 'derekwyatt/vim-scala'
 Plugin 'greyblake/vim-preview'
 "Plugin 'derekwyatt/vim-sbt'
+Plugin 'klen/python-mode'
+"Plugin 'YankRing.vim'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+"Plugin 'Yggdroot/indentLine.git'
 " Plugins end
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -71,6 +77,7 @@ let g:airline_theme='wombat'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#bufferline#enabled = 1
 set laststatus=2
+set colorcolumn=120
 colorscheme molokai
 let g:airline_section_z = '%3pp %l:%c'
 " airline end
@@ -121,7 +128,7 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 inoremap jj <ESC>
 inoremap <silent> <Up> <ESC><UP>
 inoremap <silent> <Down> <ESC><Down>
-imap `` <C-Space>
+imap ,, <C-Space>
 " end key mapping
 " start clipboard
 set clipboard^=unnamedplus
@@ -131,6 +138,21 @@ nmap <C-y> :.w! ~/.vimbuffer<CR>
 " paste from buffer
 map <C-b> :r ~/.vimbuffer<CR>
 " end clipboard
+" start SirVer/ultisnips
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "usnippets"]
+" end SirVer/ultisnips
+" start indentLine
+" vertical line indentation
+"let g:indentLine_color_term = 239
+"let g:indentLine_color_gui = '#09AA08'
+"let g:indentLine_char = '│'
+" end indentLine
 "starts scripts
 function! ViewHtmlText(url)
 	if !empty(a:url)
@@ -149,9 +171,35 @@ vnoremap <Leader>h y:call ViewHtmlText(@@)<CR>
 nnoremap <Leader>h :call ViewHtmlText(@+)<CR>
 "end scripts
 "start NERDTree keymap
-map <C-n> :NERDTreeToggle<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
 "end NERDTree keymap
+"starm keymap for buffers
+nmap <Leader>] :bn<CR>
+nmap <Leader>[ :bp<CR>
+nmap <Leader>x :bd<CR>
+"end keymap for buffers
 "start insert line in n mode keymap
 nmap `O O<Esc>
 nmap `o o<Esc>
 "end insertline in n mode keymap
+"start soft wraps
+set wrap linebreak nolist
+"end soft wraps
+"start  python mode
+let g:syntastic_python_pylint_post_args="--max-line-length=120"
+let g:syntastic_python_checkers=['flake8']
+let g:syntastic_python_flake8_args='--ignore=E501,E225'
+"end python mode
+"start Eclim
+nnoremap <silent> <buffer> <leader>I :JavaImport<cr>
+nnoremap <silent> <buffer> <leader>m :JavaImportOrganize<cr>
+nnoremap <silent> <buffer> <leader>d :JavaDocSearch -x declarations<cr>
+nnoremap <silent> <buffer> <leader>s "zyiw:exe "JavaSearch -p ".@z."" <cr>
+nnoremap <silent> <buffer> <leader><cr> :JavaSearchContext<cr>
+nnoremap <leader>q :JavaCorrect<cr>
+nnoremap <silent> <buffer> <leader>f :JavaFormat<cr>
+nnoremap <leader>t :JUnit %<cr>
+"end eclim
+"start tabs replacment on save
+set tabstop=4 shiftwidth=4 expandtab
+"end tab replacment on save
